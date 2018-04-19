@@ -5,18 +5,26 @@
       <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Cpu</th>
         <th>Load</th>
         <th>Network</th>
         <th>Memory</th>
+        <th>Disk Usage</th>
       </tr>
       </thead>
       <tbody>
       <tr v-for="node in nodes" :value="node" :key="node.id">
         <td>#{{node.id}}</td>
         <td>{{node.name}}</td>
+        <td>{{node.cpu_count}}</td>
         <td><span class="uk-label uk-label-warning">{{node.load1}} {{node.load5}}  {{node.load15}}</span></td>
         <td><span class="uk-label uk-label-success">{{bytesToSize(node.bytesTotal)}}</span></td>
-        <td><progress id="js-progressbar" class="uk-progress" :value="node.memoryUsedPercent" max="100"></progress></td>
+        <td>
+          <progress id="js-progressbar" class="uk-progress" :value="node.memoryUsedPercent" max="100"></progress>
+        </td>
+        <td>
+          <progress id="js-progressbar" class="uk-progress" :value="node.disk_usage_percent" max="100"></progress>
+        </td>
       </tr>
       </tbody>
     </table>

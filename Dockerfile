@@ -11,6 +11,7 @@ FROM nginx
 MAINTAINER orvice orvice@orx.me
 
 ENV API_URI  http://127.0.0.1:2008
+ENV APP_NAME MonitorUI
 COPY --from=builder /opt/app/dist /usr/share/nginx/html
 
 ADD ./docker-run.sh /usr/share/nginx/
