@@ -68,6 +68,13 @@
             let stat = m.Stat;
             let i = t.ids[m.node_id];
             t.nodes[i].bytesTotal = stat.net_speed.bytesRecv + stat.net_speed.bytesSent;
+
+            t.nodes[i].bytesSent = stat.net_speed.bytesSent;
+            t.nodes[i].bytesRecv = stat.net_speed.bytesRecv;
+
+            t.nodes[i].bytesSentTotal = stat.net_stat.bytesSent;
+            t.nodes[i].bytesRecvTotal = stat.net_stat.bytesRecv;
+
             t.nodes[i].memoryUsedPercent = stat.memory_status.usedPercent;
             t.nodes[i].cpu_count = stat.cpu_count;
             t.nodes[i].status = stat.net_info.status;

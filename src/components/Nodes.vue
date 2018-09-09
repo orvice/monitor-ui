@@ -8,7 +8,8 @@
         <th>Status</th>
         <th>Cpu</th>
         <th>Load</th>
-        <th>Network</th>
+        <th>Traffic ↑|↓</th>
+        <th>Network ↑|↓</th>
         <th>Memory</th>
         <th>Disk Usage</th>
       </tr>
@@ -24,12 +25,23 @@
         </td>
         <td>{{node.cpu_count}}</td>
         <td><span class="uk-label uk-label-warning">{{node.load1}} {{node.load5}}  {{node.load15}}</span></td>
-        <td><span class="uk-label uk-label-success">{{bytesToSize(node.bytesTotal)}}</span></td>
         <td>
-          <progress id="js-progressbar" class="uk-progress" :value="node.memoryUsedPercent" max="100"></progress>
+          <span class="uk-label uk-label-primary">{{bytesToSize(node.bytesSentTotal)}}</span> |  <span class="uk-label uk-label-success">{{bytesToSize(node.bytesRecvTotal)}}</span>
         </td>
         <td>
-          <progress id="js-progressbar" class="uk-progress" :value="node.disk_usage_percent" max="100"></progress>
+          <span class="uk-label uk-label-primary">{{bytesToSize(node.bytesSent)}}</span> |  <span class="uk-label uk-label-success">{{bytesToSize(node.bytesRecv)}}</span>
+        </td>
+
+        <td>
+          <progress v-if="node.memoryUsedPercent<80" id="js-progressbar" class="uk-progress uk-progress-success"
+                    :value="node.memoryUsedPercent" max="100"></progress>
+          <progress v-if="node.memoryUsedPercent>=80" id="js-progressbar" class="uk-progress uk-progress-warning"
+                    :value="node.memoryUsedPercent" max="100"></progress>
+        </td>
+        <td>
+          <progress id="js-progressbar" class="uk-progress" :value="node.disk_usage_percent" max="100">
+            {{node.disk_usage_percent}}%
+          </progress>
         </td>
       </tr>
       </tbody>
@@ -52,3 +64,7 @@
     },
   }
 </script>
+
+<style>
+
+</style>
