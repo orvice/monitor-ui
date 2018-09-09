@@ -7,7 +7,7 @@ RUN npm install
 RUN npm run build
 
 
-FROM nginx
+FROM orvice/nginx-vue
 MAINTAINER orvice orvice@orx.me
 
 ENV API_URI  http://127.0.0.1:2008
