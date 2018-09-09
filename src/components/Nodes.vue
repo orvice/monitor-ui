@@ -5,6 +5,7 @@
       <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Status</th>
         <th>Cpu</th>
         <th>Load</th>
         <th>Network</th>
@@ -16,6 +17,10 @@
       <tr v-for="node in nodes" :value="node" :key="node.id">
         <td>#{{node.id}}</td>
         <td>{{node.name}}</td>
+        <td>
+          <span v-if="node.status==-2" class="uk-label uk-label-warning">GFWed</span>
+          <span v-if="node.status==1" class="uk-label uk-label-success">OK</span>
+        </td>
         <td>{{node.cpu_count}}</td>
         <td><span class="uk-label uk-label-warning">{{node.load1}} {{node.load5}}  {{node.load15}}</span></td>
         <td><span class="uk-label uk-label-success">{{bytesToSize(node.bytesTotal)}}</span></td>

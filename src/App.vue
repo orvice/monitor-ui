@@ -70,6 +70,7 @@
             t.nodes[i].bytesTotal = stat.net_speed.bytesRecv + stat.net_speed.bytesSent;
             t.nodes[i].memoryUsedPercent = stat.memory_status.usedPercent;
             t.nodes[i].cpu_count = stat.cpu_count;
+            t.nodes[i].status = stat.net_info.status;
             t.nodes[i].load1 = stat.avg_load.load1;
             t.nodes[i].load5 = stat.avg_load.load5;
             t.nodes[i].load15 = stat.avg_load.load15;
