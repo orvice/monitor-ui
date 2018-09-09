@@ -82,6 +82,9 @@
             t.nodes[i].load5 = stat.avg_load.load5;
             t.nodes[i].load15 = stat.avg_load.load15;
             t.nodes[i].disk_usage_percent = stat.disk_usage.usedPercent;
+
+            t.nodes[i].cpu_percent = stat.avg_load.load1/stat.cpu_count * 100;
+
           })
         });
         socket.on('disconnect', function () {

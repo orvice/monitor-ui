@@ -10,6 +10,7 @@
         <th>Load</th>
         <th>Traffic ↑|↓</th>
         <th>Network ↑|↓</th>
+        <th>CPU Usage</th>
         <th>Memory</th>
         <th>Disk Usage</th>
       </tr>
@@ -33,11 +34,19 @@
         </td>
 
         <td>
+          <progress v-if="node.cpu_percent<80" id="js-progressbar" class="uk-progress uk-progress-success"
+                    :value="node.cpu_percent" max="100"></progress>
+          <progress v-if="node.cpu_percent>=80" id="js-progressbar" class="uk-progress uk-progress-warning"
+                    :value="node.cpu_percent" max="100"></progress>
+        </td>
+
+        <td>
           <progress v-if="node.memoryUsedPercent<80" id="js-progressbar" class="uk-progress uk-progress-success"
                     :value="node.memoryUsedPercent" max="100"></progress>
           <progress v-if="node.memoryUsedPercent>=80" id="js-progressbar" class="uk-progress uk-progress-warning"
                     :value="node.memoryUsedPercent" max="100"></progress>
         </td>
+
         <td>
           <progress id="js-progressbar" class="uk-progress" :value="node.disk_usage_percent" max="100">
             {{node.disk_usage_percent}}%
