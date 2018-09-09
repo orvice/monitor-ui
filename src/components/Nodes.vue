@@ -18,8 +18,9 @@
         <td>#{{node.id}}</td>
         <td>{{node.name}}</td>
         <td>
-          <span v-if="node.status==-2" class="uk-label uk-label-warning">GFWed</span>
-          <span v-if="node.status==1" class="uk-label uk-label-success">OK</span>
+          <span v-if="node.status===-2" class="uk-label uk-label-warning">GFW</span>
+          <span v-else-if="node.status===1" class="uk-label uk-label-success">OK</span>
+          <span v-else class="uk-label uk-label-danger">Unknown</span>
         </td>
         <td>{{node.cpu_count}}</td>
         <td><span class="uk-label uk-label-warning">{{node.load1}} {{node.load5}}  {{node.load15}}</span></td>
