@@ -9,7 +9,7 @@ else
 fi
 
 if [ -n $APP_NAME ]; then
-  sed -i "s|http://MonitorUI|$APP_NAME|g" /usr/share/nginx/html/static/js/*.js
+  sed -i "s|MonitorUI|$APP_NAME|g" /usr/share/nginx/html/static/js/*.js
 else
   echo "using default app name"
 fi
