@@ -8,6 +8,12 @@ else
   echo "no replace api_uri"
 fi
 
+if [ -n $APP_NAME ]; then
+  sed -i "s|http://MonitorUI|$APP_NAME|g" /usr/share/nginx/html/static/js/*.js
+else
+  echo "using default app name"
+fi
+
 
 
 exec nginx -g 'daemon off;'
