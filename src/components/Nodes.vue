@@ -64,6 +64,9 @@
     props: ['nodes'],
     methods: {
       bytesToSize: function (bytes) {
+        if (bytes === undefined){
+          return '0 B';
+        }
         if (bytes === 0) return '0 B';
         const k = 1024, // or 1024
           sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
