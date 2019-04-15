@@ -78,5 +78,10 @@
 </script>
 
 <style>
-
+/*
+ 只允许</br>标签换行
+*/
+.uk-table td{
+  white-space: nowrap;
+}
 </style>
