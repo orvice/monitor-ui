@@ -67,6 +67,9 @@
           socket.on('serverStat', function (m) {
             let stat = m.Stat;
             let i = t.ids[m.node_id];
+            if (i === undefined || i === null) {
+              return
+            }
             t.nodes[i].bytesTotal = stat.net_speed.bytesRecv + stat.net_speed.bytesSent;
 
             t.nodes[i].bytesSent = stat.net_speed.bytesSent;
@@ -83,7 +86,7 @@
             t.nodes[i].load15 = stat.avg_load.load15;
             t.nodes[i].disk_usage_percent = stat.disk_usage.usedPercent;
 
-            t.nodes[i].cpu_percent = stat.avg_load.load1/stat.cpu_count * 100;
+            t.nodes[i].cpu_percent = stat.avg_load.load1 / stat.cpu_count * 100;
 
           })
         });
